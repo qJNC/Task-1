@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>Login form</title> 
+    <link rel="stylesheet" type="text/css" href="static/designing.css">
+    
+</head> 
+<body> 
+   <div class="cont">
+    <h2>Profile Form</h2>
+    <img src="static/user.png" id="im">
+    <form name="forms" method="POST" id="form">
+        {% csrf_token %}
+        <label>First Name</label>
+        <input type="text" placeholder="Enter your first name " class="box" id="first" name="username"><br>
+        <label>Last Name</label>
+        <input type="text" placeholder="Enter your last name " class="box" id="last" name="lastname"><br>
+        <label>Email Id</label>
+        <input type="email" placeholder="Enter your Email here" class="box" id="email" name="emailid"><br>
+        <label>Password</label>
+        <input type="password" placeholder="Enter your Password here" class="box" id="Pass" name="passw"><br>
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Enter your Password again" class="box" id="con" name="confpass"><br>
+        <label>Profile Picture</label>
+        <input type="file"  id="Pr" class="box" name="profile"><br>
+        <label> Address</label>
+        <textarea id="add" rows="4" cols="50"  name="address"></textarea><br>
+
+        <input type="checkbox"><label>Terms and Conditions</label><br>
+        <div id="b"><button type="submit"  id="log"><a href="{% url "login" %}">Login</a></button>
+        <button type="submit" ><a href="{% url "login" %}">Sign Up</a></button></div>
+    </form>
+  </div>
+  <script>
+    let pass= document.getElementById("Pass");
+    let conf=document.getElementById("con");
+    let login=document.getElementById("log");
+    let form=document.getElementById( "form");
+    login.addEventListener("click",function(e){
+        e.preventDefault();
+        if(form){
+          if(pass.value != conf.value){
+            alert("Password  does not match");
+          }
+          else{
+            alert("Successfully Matched");
+            alert("Successfully Login");
+          }
+        }
+        
+
+    });
+
+  </script>
+</body>
+</html
